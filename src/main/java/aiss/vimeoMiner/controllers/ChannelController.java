@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/videominer")
+@RequestMapping("/videoMiner")
 public class ChannelController {
 
     @Autowired
@@ -19,7 +18,7 @@ public class ChannelController {
     // @Autowired
     // RestTemplate restTemplate;
 
-    // final String vimeoMinerUri = "http://localhost:8080/vimeominer/channels";
+    // final String vimeoMinerUri = "http://localhost:8081/vimeominer/channels";
 
 
     @GetMapping
