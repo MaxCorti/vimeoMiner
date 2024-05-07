@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/vimeoMiner")
+@RequestMapping("/api/vimeoMiner")
 public class VideoController {
     @Autowired
     VideoService service;
     @Autowired
     RestTemplate restTemplate;
-    final String videoMinerUri = "http://localhost:8080/api/videMiner/videos";
+    final String videoMinerUri = "http://localhost:8080/api/videoMiner/videos";
     @GetMapping("/{id}")
     public Video getOneVideo(@PathVariable String id) {
         return service.getOneVideo(id);
