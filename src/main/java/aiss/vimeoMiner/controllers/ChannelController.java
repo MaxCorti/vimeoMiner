@@ -18,7 +18,7 @@ public class ChannelController {
     // @Autowired
     // RestTemplate restTemplate;
 
-    // final String vimeoMinerUri = "http://localhost:8080/vimeominer/channels";
+    // final String vimeoMinerUri = "http://localhost:8081/vimeominer/channels";
 
 
     @GetMapping

@@ -18,7 +18,7 @@ public class UserController {
     // @Autowired
     // RestTemplate restTemplate;
 
-    // final String vimeoMinerUri = "http://localhost:8080/vimeominer/users";
+    // final String vimeoMinerUri = "http://localhost:8081/vimeominer/users";
 
     @GetMapping
     public List<User> findAllUsers() { return service.getAllUsers(); }
