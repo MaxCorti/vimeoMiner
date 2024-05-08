@@ -1,37 +1,41 @@
 package aiss.vimeoMiner.models.channel;
 
+import aiss.vimeoMiner.models.video.Video;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Channel {
 
-    public Channel(String id, String name, Object description, String createdTime) {
+    public Channel(String id, String name, String description, String createdTime) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.createdTime = createdTime;
     }
 
-    @JsonProperty("id")
+    @JsonProperty("uri")
     private String id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("description")
-    private Object description;
+    private String description;
     @JsonProperty("created_time")
     private String createdTime;
+    @JsonProperty("videos")
+    private List<Video> videos;
 
 
     // GETTERS AND SETTERS
-    @JsonProperty("id")
-    public String getId() { return id; }
+    @JsonProperty("uri")
+    public String getId() { return id.split("/")[2]; }
 
-    @JsonProperty("id")
-    public void setId(String id) { this.id = id; }
+    @JsonProperty("uri")
+    public void setId(String id) { this.id = id.split("/")[2]; }
 
 
     @JsonProperty("name")
@@ -46,12 +50,12 @@ public class Channel {
 
 
     @JsonProperty("description")
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
     @JsonProperty("description")
-    public void setDescription(Object description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -65,6 +69,13 @@ public class Channel {
     public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
+
+
+    @JsonProperty("videos")
+    public List<Video> getVideos() { return videos; }
+
+    @JsonProperty("videos")
+    public void setVideos(List<Video> videos) { this.videos = videos; }
 
 
     @Override

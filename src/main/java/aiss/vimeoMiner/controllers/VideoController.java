@@ -1,6 +1,6 @@
 package aiss.vimeoMiner.controllers;
 
-import aiss.vimeoMiner.models.Video;
+import aiss.vimeoMiner.models.video.Video;
 import aiss.vimeoMiner.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

@@ -1,5 +1,6 @@
 package aiss.vimeoMiner.services;
 
+import aiss.vimeoMiner.models.video.Video;
 import aiss.vimeoMiner.models.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -28,7 +29,25 @@ public class ChannelService {
         ResponseEntity<Channel[]> response = restTemplate.exchange(uri,
                 HttpMethod.GET,request,Channel[].class);
         List<Channel> channels = Arrays.stream(response.getBody()).toList();
+        channelParser(channels);
         return channels;
+    }
+
+    public void channelParser(List<Channel> channels) {
+        for (Channel c : channels) {
+            if (c != null) {
+                String id = c.getId();
+                String name = c.getName();
+                String description = c.getDescription();
+                String createdTime = c.getCreatedTime();
+                List<Video> videos = VideoService.getVideosChannel(id);
+
+                c.setName(name);
+                c.setDescription(description);
+                c.setCreatedTime(createdTime);
+                c.setVideos(videos);
+            }
+        }
     }
 
     @GetMapping("/{id}")

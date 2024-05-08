@@ -1,6 +1,6 @@
 package aiss.vimeoMiner.services;
 
-import aiss.vimeoMiner.models.Video;
+import aiss.vimeoMiner.models.video.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,9 +15,10 @@ import java.util.List;
 @Service
 public class VideoService {
     @Autowired
-    RestTemplate restTemplate;
-    final String baseUri = "https://api.vimeo.com";
-    public List<Video> getVideosChannel(String id) {
+    static RestTemplate restTemplate;
+    final static String baseUri = "https://api.vimeo.com";
+
+    public static List<Video> getVideosChannel(String id) {
         String uri = baseUri + "/channels/" + id + "/videos";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");

@@ -1,4 +1,4 @@
-package aiss.vimeoMiner.models;
+package aiss.vimeoMiner.models.video;
 
 import aiss.vimeoMiner.models.caption.Caption;
 import aiss.vimeoMiner.models.comment.Comment;
