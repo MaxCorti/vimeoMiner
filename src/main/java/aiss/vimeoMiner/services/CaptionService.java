@@ -17,11 +17,11 @@ import java.util.List;
 public class CaptionService {
 
     @Autowired
-    RestTemplate restTemplate;
-    final String baseUri = "https://api.vimeo.com/";
+    static RestTemplate restTemplate;
+    static final String baseUri = "https://api.vimeo.com/";
 
 
-    public List<Caption> getAllCaptions(String id){
+    public static List<Caption> getCaptionsVideo(String id){
         String uri = baseUri + "/videos/" + id + "/texttracks";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
@@ -35,7 +35,7 @@ public class CaptionService {
     }
 
     @GetMapping("/{id}")
-    public Caption getOneCaption(String idVideo, String idCaption) {
+    public static Caption getCaptionVideo(String idVideo, String idCaption) {
         String uri = baseUri + "/videos/" + idVideo + "/texttracks/" +  idCaption;
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
