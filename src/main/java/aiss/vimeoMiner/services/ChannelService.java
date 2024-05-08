@@ -40,12 +40,12 @@ public class ChannelService {
                 String name = c.getName();
                 String description = c.getDescription();
                 String createdTime = c.getCreatedTime();
-                List<Video> videos = VideoService.getVideosChannel(id);
+                //List<Video> videos = VideoService.getVideosChannel(id);
 
                 c.setName(name);
                 c.setDescription(description);
                 c.setCreatedTime(createdTime);
-                c.setVideos(videos);
+                //c.setVideos(videos);
             }
         }
     }

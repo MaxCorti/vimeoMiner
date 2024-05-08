@@ -1,4 +1,4 @@
-package aiss.vimeoMiner.controllers;
+/*package aiss.vimeoMiner.controllers;
 
 
 import aiss.vimeoMiner.models.channel.Channel;
@@ -58,4 +58,4 @@ public class ChannelController {
     }
 
 
-}
+}*/

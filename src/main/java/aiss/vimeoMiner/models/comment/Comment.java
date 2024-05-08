@@ -1,5 +1,5 @@
 
-package aiss.vimeoMiner.models.comment;
+/*package aiss.vimeoMiner.models.comment;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -81,4 +81,4 @@ public class Comment {
         this.data = data;
     }
 
-}
+}*/

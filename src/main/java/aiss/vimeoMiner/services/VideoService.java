@@ -1,8 +1,8 @@
 package aiss.vimeoMiner.services;
 
 import aiss.vimeoMiner.models.caption.Caption;
-import aiss.vimeoMiner.models.comment.Comment;
 import aiss.vimeoMiner.models.video.Video;
+import aiss.vimeoMiner.models.video.VideoList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,29 +17,18 @@ import java.util.List;
 @Service
 public class VideoService {
     @Autowired
-    static RestTemplate restTemplate;
-    final static String baseUri = "https://api.vimeo.com";
+    RestTemplate restTemplate;
+    final String baseUri = "https://api.vimeo.com/channels/";
 
-    public static List<Video> getVideosChannel(String id) {
-        String uri = baseUri + "/channels/" + id + "/videos";
+    public List<Video> getVideosChannel(String id) {
+        String uri = baseUri + id + "/videos";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
         HttpEntity<String[]> request = new HttpEntity<>(null, headers);
-        ResponseEntity<Video[]> response = restTemplate.exchange(uri,
-                HttpMethod.GET,request,Video[].class);
-        List<Video> videos = Arrays.stream(response.getBody()).toList();
-        return videos;
+        ResponseEntity<VideoList> response = restTemplate.exchange(uri,
+                HttpMethod.GET,request,VideoList.class);
+        VideoList videos = response.getBody();
+        return videos.getVideos();
     }
 
-    public void videoParser(List<Video> videos) {
-        for (Video v: videos)
-            if (v != null) {
-                String id = v.getId();
-                String name = v.getName();
-                String description = v.getDescription();
-                String releaseTime = v.getReleaseTime();
-                List<Caption> captions = CaptionService.getCaptionsVideo(id);
-                // List<Comment> comments = CommentsService.getCommentsVideo(id);
-            }
-    }
 }
