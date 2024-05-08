@@ -21,8 +21,8 @@ public class CaptionService {
     final String baseUri = "https://api.vimeo.com/";
 
 
-    public List<Caption> getAllCaptions(){
-        String uri = baseUri + "/videos/" + Video.uri + "/texttracks";
+    public List<Caption> getAllCaptions(String id){
+        String uri = baseUri + "/videos/" + id + "/texttracks";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
 
@@ -35,8 +35,8 @@ public class CaptionService {
     }
 
     @GetMapping("/{id}")
-    public Caption getOneCaption(String id) {
-        String uri = baseUri + "/videos/" + Video.uri + "/texttracks/" +  id;
+    public Caption getOneCaption(String idVideo, String idCaption) {
+        String uri = baseUri + "/videos/" + idVideo + "/texttracks/" +  idCaption;
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
         HttpEntity<String[]> request = new HttpEntity<>(null, headers);
