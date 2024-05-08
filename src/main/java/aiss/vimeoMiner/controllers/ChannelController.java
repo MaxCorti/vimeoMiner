@@ -1,7 +1,7 @@
-/*package aiss.vimeoMiner.controllers;
-
+package aiss.vimeoMiner.controllers;
 
 import aiss.vimeoMiner.models.channel.Channel;
+import aiss.vimeoMiner.models.video.Video;
 import aiss.vimeoMiner.services.ChannelService;
 import aiss.vimeoMiner.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,46 +16,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/vimeoMiner")
 public class ChannelController {
-
-
-
-    // @Autowired
-    // RestTemplate restTemplate;
-
-    // final String vimeoMinerUri = "http://localhost:8081/vimeominer/channels";
-
-
-   // @GetMapping
-  //  public List<Channel> findAllChannels(){
-  //      return service.getAllChannels();
-  //  }
-
-  //  @GetMapping("/{id}")
-  //  public Channel findOneChannel(String id) {
-  //      return service.getOneChannel(id);
-  //  }
-
-
-
-    // .............
     @Autowired
     ChannelService service;
     @Autowired
     RestTemplate restTemplate;
     final String videoMinerUri = "http://localhost:8080/api/videoMiner/videos";
-
     @GetMapping("/{id}")
-    public Channel getOneChannel(@PathVariable String id) {
-        return service.getOneChannel(id);
+    public Channel getChannel(@PathVariable String id) {
+        return service.getChannel(id);
     }
-
     @PostMapping("/{id}")
     public Channel sendChannel(@PathVariable String id){
-        Channel channel = service.getOneChannel(id);
-        HttpEntity<Channel> request = new HttpEntity<>(channel);
+        Channel canal = service.getChannel(id);
+        HttpEntity<Channel> request = new HttpEntity<>(canal);
         ResponseEntity<Channel> response = restTemplate.exchange(videoMinerUri, HttpMethod.POST,request, Channel.class);
         return response.getBody();
     }
-
-
-}*/
+}

@@ -1,84 +1,58 @@
+package aiss.vimeoMiner.models.comment;
 
-/*package aiss.vimeoMiner.models.comment;
-
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "total",
-    "page",
-    "per_page",
-    "paging",
-    "data"
-})
-
-
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Comment {
 
-    @JsonProperty("total")
-    private Integer total;
-    @JsonProperty("page")
-    private Integer page;
-    @JsonProperty("per_page")
-    private Integer perPage;
-    @JsonProperty("paging")
-    private Paging paging;
-    @JsonProperty("data")
-    private List<Datum> data;
+    @JsonProperty("uri")
+    private String id;
+    @JsonProperty("text")
+    private String text;
+    @JsonProperty("created_on")
+    private String createdOn;
 
-    @JsonProperty("total")
-    public Integer getTotal() {
-        return total;
+
+    // GETTERS AND SETTERS
+    @JsonProperty("uri")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("total")
-    public void setTotal(Integer total) {
-        this.total = total;
+    @JsonProperty("uri")
+    public void setId(String id) {
+        this.id = id.split("/")[4];
     }
 
-    @JsonProperty("page")
-    public Integer getPage() {
-        return page;
+    @JsonProperty("text")
+    public String getText() {
+        return text;
     }
 
-    @JsonProperty("page")
-    public void setPage(Integer page) {
-        this.page = page;
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
     }
 
-    @JsonProperty("per_page")
-    public Integer getPerPage() {
-        return perPage;
+    @JsonProperty("created_on")
+    public String getCreatedOn() {
+        return createdOn;
     }
 
-    @JsonProperty("per_page")
-    public void setPerPage(Integer perPage) {
-        this.perPage = perPage;
+    @JsonProperty("created_on")
+    public void setCreatedOn(String createdOn) {
+        this.createdOn = createdOn;
     }
 
-    @JsonProperty("paging")
-    public Paging getPaging() {
-        return paging;
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", language='" + text + '\'' +
+                ", name='" + createdOn;
     }
-
-    @JsonProperty("paging")
-    public void setPaging(Paging paging) {
-        this.paging = paging;
-    }
-
-    @JsonProperty("data")
-    public List<Datum> getData() {
-        return data;
-    }
-
-    @JsonProperty("data")
-    public void setData(List<Datum> data) {
-        this.data = data;
-    }
-
-}*/
+}

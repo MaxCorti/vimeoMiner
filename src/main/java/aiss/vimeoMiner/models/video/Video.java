@@ -2,6 +2,7 @@ package aiss.vimeoMiner.models.video;
 
 import aiss.vimeoMiner.models.caption.Caption;
 //import aiss.vimeoMiner.models.comment.Comment;
+import aiss.vimeoMiner.models.comment.Comment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,7 +27,46 @@ public class Video {
     private String description;
     @JsonProperty("release_time")
     private String releaseTime;
-    /*@JsonProperty("comments")
+
+    @JsonProperty("texttracks")
+    private List<Caption> captions;
+    @JsonProperty("comments")
+    private List<Comment> comments;
+    @JsonProperty("comments")
+    public List<Comment> getComments() {
+        return comments;
+    }
+    @JsonProperty("comments")
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    @JsonProperty("texttracks")
+    public List<Caption> getCaptions() {
+        return captions;
+    }
+    @JsonProperty("texttracks")
+    public void setCaptions(List<Caption> captions) {
+        this.captions = captions;
+    }
+
+
+    public Video(){
+        this.captions = new ArrayList<>();
+        this.comments = new ArrayList<>();
+    }
+
+    /*@JsonProperty("metadata")
+    private List<VideoConnections> metadata;
+    @JsonProperty("metadata")
+    public List<VideoConnections> getMetadata() {
+        return metadata;
+    }
+    @JsonProperty("metadata")
+    public void setMetadata(List<VideoConnections> metadata) {
+        this.metadata = metadata;
+    }
+@JsonProperty("comments")
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "videoId")
     @NotNull(message = "Video comments cannot be null")
@@ -40,7 +80,7 @@ public class Video {
 
     @JsonProperty("uri")
     public String getId() {
-        return id.split("/")[2];
+        return id;
     }
     @JsonProperty("uri")
     public void setId(String id) {
@@ -54,6 +94,18 @@ public class Video {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseTime='" + releaseTime + '\'' +
+                ", captions=" + captions + '\'' +
+                ", comments=" + comments + '\'' +
+                '}';
     }
 
     @JsonProperty("description")
@@ -94,14 +146,5 @@ public class Video {
     public void setCaptions(List<Caption> captions) {
         this.captions = captions;
     }*/
-
-    public String toString() {
-        return "Video{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", releaseTime='" + releaseTime + '\'' +
-                '}';
-    }
 
 }

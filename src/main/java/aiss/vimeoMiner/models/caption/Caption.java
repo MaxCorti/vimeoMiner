@@ -10,14 +10,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class Caption {
 
-    public Caption(Integer id, String language, String name) {
-        this.id = id;
-        this.language = language;
-        this.name = name;
-    }
-
-    @JsonProperty("id")
-    private Integer id;
+    @JsonProperty("uri")
+    private String id;
     @JsonProperty("language")
     private String language;
     @JsonProperty("name")
@@ -25,14 +19,14 @@ public class Caption {
 
 
     // GETTERS AND SETTERS
-    @JsonProperty("id")
-    public Integer getId() {
+    @JsonProperty("uri")
+    public String getId() {
         return id;
     }
 
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
+    @JsonProperty("uri")
+    public void setId(String id) {
+        this.id = id.split("/")[4];
     }
 
     @JsonProperty("language")
@@ -57,10 +51,8 @@ public class Caption {
 
     @Override
     public String toString() {
-        return "Caption{" +
-                "id=" + id +
+        return "id=" + id +
                 ", language='" + language + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+                ", name='" + name;
     }
 }

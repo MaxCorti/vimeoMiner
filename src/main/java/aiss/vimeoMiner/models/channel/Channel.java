@@ -4,19 +4,14 @@ import aiss.vimeoMiner.models.video.Video;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Channel {
-
-    public Channel(String id, String name, String description, String createdTime) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.createdTime = createdTime;
-    }
 
     @JsonProperty("uri")
     private String id;
@@ -29,10 +24,14 @@ public class Channel {
     @JsonProperty("videos")
     private List<Video> videos;
 
+    public Channel(){
+        this.videos = new ArrayList<>();
+    }
+
 
     // GETTERS AND SETTERS
     @JsonProperty("uri")
-    public String getId() { return id.split("/")[2]; }
+    public String getId() { return id; }
 
     @JsonProperty("uri")
     public void setId(String id) { this.id = id.split("/")[2]; }
@@ -85,6 +84,7 @@ public class Channel {
                 ", name='" + name + '\'' +
                 ", description=" + description +
                 ", createdTime='" + createdTime + '\'' +
+                ", videos=" + videos + '\'' +
                 '}';
     }
 }

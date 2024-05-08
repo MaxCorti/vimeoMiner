@@ -9,11 +9,11 @@ import java.util.List;
 public class VideoList {
     @JsonProperty("data")
     private List<Video> videos;
-
+    @JsonProperty("data")
     public List<Video> getVideos() {
         return videos;
     }
-
+    @JsonProperty("data")
     public void setVideos(List<Video> videos) {
         this.videos = videos;
     }
