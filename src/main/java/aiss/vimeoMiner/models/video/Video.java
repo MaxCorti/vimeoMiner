@@ -1,18 +1,10 @@
 package aiss.vimeoMiner.models.video;
 
 import aiss.vimeoMiner.models.caption.Caption;
-//import aiss.vimeoMiner.models.comment.Comment;
 import aiss.vimeoMiner.models.comment.Comment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +19,12 @@ public class Video {
     private String description;
     @JsonProperty("release_time")
     private String releaseTime;
-
     @JsonProperty("texttracks")
     private List<Caption> captions;
     @JsonProperty("comments")
     private List<Comment> comments;
+
+
     @JsonProperty("comments")
     public List<Comment> getComments() {
         return comments;
@@ -40,7 +33,6 @@ public class Video {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
-
     @JsonProperty("texttracks")
     public List<Caption> getCaptions() {
         return captions;

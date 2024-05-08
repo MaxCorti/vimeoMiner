@@ -1,13 +1,10 @@
 package aiss.vimeoMiner.services;
 
 import aiss.vimeoMiner.models.video.Video;
-import aiss.vimeoMiner.models.video.VideoList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest

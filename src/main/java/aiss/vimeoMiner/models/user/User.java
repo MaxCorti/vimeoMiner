@@ -1,11 +1,11 @@
 package aiss.vimeoMiner.models.user;
 
+import aiss.vimeoMiner.models.pictures.Pictures;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
@@ -20,10 +20,13 @@ public class User {
     private String id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("userLink")
+    @JsonProperty("link")
     private String userLink;
-    @JsonProperty("pictureLink")
+    @JsonProperty("pictures")
+    private Pictures pictures;
+
     private String pictureLink;
+
 
 
 
@@ -52,6 +55,15 @@ public class User {
 
     @JsonProperty("userLink")
     public void setUserLink(String userLink) { this.userLink = userLink; }
+
+
+    public Pictures getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Pictures pictures) {
+        this.pictures = pictures;
+    }
 
     @JsonProperty("pictureLink")
     public String getPictureLink() { return pictureLink; }

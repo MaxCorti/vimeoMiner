@@ -1,8 +1,5 @@
 package aiss.vimeoMiner.services;
 
-import aiss.vimeoMiner.models.caption.Caption;
-import aiss.vimeoMiner.models.caption.CaptionList;
-import aiss.vimeoMiner.models.comment.CommentList;
 import aiss.vimeoMiner.models.video.Video;
 import aiss.vimeoMiner.models.video.VideoList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +9,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -41,7 +36,7 @@ public class VideoService {
     public void parseVideos(List<Video> videos) {
         for (Video v : videos) {
             v.getCaptions().addAll(captionService.getCaptionsVideo(v.getId()));
-            v.getComments().addAll(commentService.getCommentVideo(v.getId()));
+            v.getComments().addAll(commentService.getCommentsVideo(v.getId()));
         }
     }
 

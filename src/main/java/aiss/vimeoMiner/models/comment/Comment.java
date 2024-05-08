@@ -1,14 +1,20 @@
 package aiss.vimeoMiner.models.comment;
 
+import aiss.vimeoMiner.models.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Comment {
+
+    public Comment(String id, String text, String createdOn, User author) {
+        this.id = id;
+        this.text = text;
+        this.createdOn = createdOn;
+        this.author = author;
+    }
 
     @JsonProperty("uri")
     private String id;
@@ -16,6 +22,8 @@ public class Comment {
     private String text;
     @JsonProperty("created_on")
     private String createdOn;
+    @JsonProperty("user")
+    private User author;
 
 
     // GETTERS AND SETTERS
@@ -47,6 +55,14 @@ public class Comment {
     @JsonProperty("created_on")
     public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     @Override
