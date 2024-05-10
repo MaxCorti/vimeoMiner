@@ -16,7 +16,7 @@ public class ChannelController {
     ChannelService service;
     @Autowired
     RestTemplate restTemplate;
-    final String videoMinerUri = "http://localhost:8080/api/videoMiner/videos";
+    final String videoMinerUri = "http://localhost:8080/api/videoMiner/channels";
 
     @GetMapping("/{id}")
     public Channel getChannel(@PathVariable String id) {
