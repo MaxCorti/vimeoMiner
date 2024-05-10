@@ -12,7 +12,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Channel {
 
-    @JsonProperty("uri")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("name")
     private String name;
@@ -29,7 +29,7 @@ public class Channel {
 
 
     // GETTERS AND SETTERS
-    @JsonProperty("uri")
+    @JsonProperty("id")
     public String getId() { return id; }
 
     @JsonProperty("uri")

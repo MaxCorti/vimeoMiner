@@ -16,7 +16,7 @@ public class Comment {
         this.author = author;
     }
 
-    @JsonProperty("uri")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("text")
     private String text;
@@ -27,7 +27,7 @@ public class Comment {
 
 
     // GETTERS AND SETTERS
-    @JsonProperty("uri")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }

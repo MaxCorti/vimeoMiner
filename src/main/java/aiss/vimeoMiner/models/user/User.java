@@ -35,8 +35,8 @@ public class User {
     @JsonProperty("id")
     public String getId() { return id; }
 
-    @JsonProperty("id")
-    public void setId(String id) { this.id = id; }
+    @JsonProperty("uri")
+    public void setId(String id) { this.id = id.split("/")[2]; }
 
 
     @JsonProperty("name")

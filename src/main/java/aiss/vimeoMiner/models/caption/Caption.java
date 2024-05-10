@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class Caption {
 
-    @JsonProperty("uri")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("language")
     private String language;
@@ -19,7 +19,7 @@ public class Caption {
 
 
     // GETTERS AND SETTERS
-    @JsonProperty("uri")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }

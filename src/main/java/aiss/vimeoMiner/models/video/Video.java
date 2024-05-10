@@ -2,6 +2,7 @@ package aiss.vimeoMiner.models.video;
 
 import aiss.vimeoMiner.models.caption.Caption;
 import aiss.vimeoMiner.models.comment.Comment;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Video {
-    @JsonProperty("uri")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("name")
     @NotEmpty(message = "Video name cannot be empty")
@@ -70,7 +71,7 @@ public class Video {
     @NotNull(message = "Video captions cannot be null")
     private List<Caption> captions;*/
 
-    @JsonProperty("uri")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
