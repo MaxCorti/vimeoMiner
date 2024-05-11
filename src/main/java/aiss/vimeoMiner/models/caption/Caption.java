@@ -12,10 +12,11 @@ public class Caption {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("language")
-    private String language;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("language")
+    private String language;
+
 
 
     // GETTERS AND SETTERS

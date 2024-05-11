@@ -20,9 +20,9 @@ public class User {
     private String id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("link")
+    @JsonProperty("user_link")
     private String userLink;
-    @JsonProperty("pictureLink")
+    @JsonProperty("picture_link")
     private String pictureLink;
 
 
@@ -48,13 +48,13 @@ public class User {
     }
 
 
-    @JsonProperty("userLink")
+    @JsonProperty("user_link")
     public String getUserLink() { return userLink; }
 
-    @JsonProperty("userLink")
+    @JsonProperty("link")
     public void setUserLink(String userLink) { this.userLink = userLink; }
 
-    @JsonProperty("pictureLink")
+    @JsonProperty("picture_link")
     public String getPictureLink() { return pictureLink; }
 
     @JsonProperty("pictures")

@@ -5,10 +5,7 @@ import aiss.vimeoMiner.services.ChannelService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,7 +26,11 @@ public class ChannelController {
     @PostMapping("/{id}")
     public Channel sendChannel(@PathVariable String id){
         Channel canal = service.getChannel(id);
-        Channel response = restTemplate.postForObject(videoMinerUri, canal, Channel.class);
-        return response;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Channel> request = new HttpEntity<>(canal, headers);
+        ResponseEntity<Channel> response = restTemplate.exchange(videoMinerUri,
+                HttpMethod.POST,request,Channel.class);
+        return response.getBody();
     }
 }

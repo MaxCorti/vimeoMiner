@@ -18,7 +18,7 @@ public class Channel {
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("created_time")
+    @JsonProperty("createdTime")
     private String createdTime;
     @JsonProperty("videos")
     private List<Video> videos;
@@ -58,7 +58,7 @@ public class Channel {
     }
 
 
-    @JsonProperty("created_time")
+    @JsonProperty("createdTime")
     public String getCreatedTime() {
         return createdTime;
     }

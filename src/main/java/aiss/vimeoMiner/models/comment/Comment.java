@@ -20,9 +20,9 @@ public class Comment {
     private String id;
     @JsonProperty("text")
     private String text;
-    @JsonProperty("created_on")
+    @JsonProperty("createdOn")
     private String createdOn;
-    @JsonProperty("user")
+    @JsonProperty("author")
     private User author;
 
 
@@ -47,7 +47,7 @@ public class Comment {
         this.text = text;
     }
 
-    @JsonProperty("created_on")
+    @JsonProperty("createdOn")
     public String getCreatedOn() {
         return createdOn;
     }
@@ -56,11 +56,11 @@ public class Comment {
     public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
     }
-
+    @JsonProperty("author")
     public User getAuthor() {
         return author;
     }
-
+    @JsonProperty("user")
     public void setAuthor(User author) {
         this.author = author;
     }

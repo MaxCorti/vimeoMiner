@@ -18,9 +18,9 @@ public class Video {
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("release_time")
+    @JsonProperty("releaseTime")
     private String releaseTime;
-    @JsonProperty("texttracks")
+    @JsonProperty("captions")
     private List<Caption> captions;
     @JsonProperty("comments")
     private List<Comment> comments;
@@ -34,7 +34,7 @@ public class Video {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
-    @JsonProperty("texttracks")
+    @JsonProperty("captions")
     public List<Caption> getCaptions() {
         return captions;
     }
@@ -111,7 +111,7 @@ public class Video {
         this.description = description;
     }
 
-    @JsonProperty("release_time")
+    @JsonProperty("releaseTime")
     public String getReleaseTime() {
         return releaseTime;
     }
