@@ -28,17 +28,17 @@ public class UserService {
         ResponseEntity<User[]> response = restTemplate.exchange(uri,
                 HttpMethod.GET,request,User[].class);
         List<User> users = Arrays.stream(response.getBody()).toList();
-        parseUsers(users);
+        //parseUsers(users);
         return users;
     }
 
-    public void parseUsers(List<User> users) {
+    /*public void parseUsers(List<User> users) {
         for (User u : users) {
             if (u != null) {
                 u.setPictureLink(u.getPictures().getBaseLink());
             }
         }
-    }
+    }*/
 
     @GetMapping("/{id}")
     public User getOneUser(String id) {
@@ -49,7 +49,7 @@ public class UserService {
         ResponseEntity<User> response = restTemplate.exchange(uri,
                 HttpMethod.GET,request,User.class);
         User user = response.getBody();
-        user.setPictureLink(user.getPictures().getBaseLink());
+        //user.setPictureLink(user.getPictures().getBaseLink());
         return user;
     }
 

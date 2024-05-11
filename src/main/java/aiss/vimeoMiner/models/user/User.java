@@ -22,9 +22,7 @@ public class User {
     private String name;
     @JsonProperty("link")
     private String userLink;
-    @JsonProperty("pictures")
-    private Pictures pictures;
-
+    @JsonProperty("pictureLink")
     private String pictureLink;
 
 
@@ -56,20 +54,11 @@ public class User {
     @JsonProperty("userLink")
     public void setUserLink(String userLink) { this.userLink = userLink; }
 
-
-    public Pictures getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(Pictures pictures) {
-        this.pictures = pictures;
-    }
-
     @JsonProperty("pictureLink")
     public String getPictureLink() { return pictureLink; }
 
-    @JsonProperty("pictureLink")
-    public void setPictureLink(String pictureLink) { this.pictureLink = pictureLink; }
+    @JsonProperty("pictures")
+    public void setPictureLink(Pictures picture) { this.pictureLink = picture.getBaseLink(); }
 
 
     @Override

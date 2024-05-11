@@ -27,9 +27,9 @@ public class ChannelController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{id}")
-    public ResponseEntity<String> sendChannel(@PathVariable String id){
+    public Channel sendChannel(@PathVariable String id){
         Channel canal = service.getChannel(id);
-        ResponseEntity<String> response = restTemplate.postForEntity(videoMinerUri, canal, String.class);
+        Channel response = restTemplate.postForObject(videoMinerUri, canal, Channel.class);
         return response;
     }
 }
