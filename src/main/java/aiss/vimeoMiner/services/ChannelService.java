@@ -20,7 +20,7 @@ public class ChannelService {
     RestTemplate restTemplate;
     final String baseUri = "https://api.vimeo.com";
 
-    public Channel getChannel(String id) {
+    public Channel getChannel(String id, Long maxVideos, Long maxComments) {
         String uri = baseUri + "/channels/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
@@ -28,13 +28,13 @@ public class ChannelService {
         ResponseEntity<Channel> response = restTemplate.exchange(uri,
                 HttpMethod.GET,request,Channel.class);
         Channel res = response.getBody();
-        channelParser(res);
+        channelParser(res, maxVideos, maxComments);
         return res;
     }
 
-    public void channelParser(Channel channel) {
-        List<Video> videos = channel.getVideos();
-        videos.addAll(service.getVideosChannel(channel.getId()));
+    public void channelParser(Channel channel, Long maxVideos, Long maxComments) {
+        List<Video> videos = service.getVideosChannel(channel.getId(), maxComments).stream().limit(maxVideos).toList();
+        channel.getVideos().addAll(videos);
     }
 
 }

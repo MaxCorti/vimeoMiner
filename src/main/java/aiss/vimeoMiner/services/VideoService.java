@@ -1,5 +1,6 @@
 package aiss.vimeoMiner.services;
 
+import aiss.vimeoMiner.models.comment.Comment;
 import aiss.vimeoMiner.models.video.Video;
 import aiss.vimeoMiner.models.video.VideoList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class VideoService {
     CaptionService captionService;
     final String baseUri = "https://api.vimeo.com";
 
-    public List<Video> getVideosChannel(String id) {
+    public List<Video> getVideosChannel(String id, Long maxComments) {
         String uri = baseUri + "/channels/" + id + "/videos";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + "fa32ef1e6b3cb17f6e81ed1b44edf7f7");
@@ -29,14 +30,16 @@ public class VideoService {
         ResponseEntity<VideoList> response = restTemplate.exchange(uri,
                 HttpMethod.GET,request,VideoList.class);
         VideoList videos = response.getBody();
-        parseVideos(videos.getVideos());
+        parseVideos(videos.getVideos(), maxComments);
         return videos.getVideos();
     }
 
-    public void parseVideos(List<Video> videos) {
+    public void parseVideos(List<Video> videos, Long maxComments) {
         for (Video v : videos) {
+            List<Comment> comments = commentService.getCommentsVideo(v.getId()).stream()
+                    .limit(maxComments).toList();
             v.getCaptions().addAll(captionService.getCaptionsVideo(v.getId()));
-            v.getComments().addAll(commentService.getCommentsVideo(v.getId()));
+            v.getComments().addAll(comments);
         }
     }
 
