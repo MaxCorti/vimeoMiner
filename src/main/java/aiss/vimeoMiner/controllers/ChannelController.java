@@ -24,7 +24,9 @@ public class ChannelController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{id}")
-    public Channel sendChannel(@PathVariable String id){
+    public Channel sendChannel(@PathVariable String id,
+                               @RequestParam(required = false, defaultValue = "10") Integer maxVideos,
+                               @RequestParam(required = false, defaultValue = "10") Integer maxComments){
         Channel canal = service.getChannel(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -33,4 +35,6 @@ public class ChannelController {
                 HttpMethod.POST,request,Channel.class);
         return response.getBody();
     }
+
+
 }
